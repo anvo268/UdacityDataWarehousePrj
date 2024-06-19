@@ -23,6 +23,24 @@ Creates a demo analytical data warehouse for a theoretical music streaming start
 
 # Usage
 
+## Step 1: Create cluster
+
+`$ python manage_cluster.py --create`
+
+## Step 2: Create tables
+
+`$ python create_tables.py`
+
+## Step 3: Run ETL pipeline
+
+`$ python etl.py`
+
+## Step 4 [Optional]: Delete Cluster
+
+`$ python manage_cluster.py --delete`
+
+
+
 # Project Questions
 
 ### Discuss the purpose of this database in context of the startup, Sparkify, and their analytical goals.
