@@ -27,6 +27,9 @@ Creates a demo analytical data warehouse for a theoretical music streaming start
 
 `$ python manage_cluster.py --create`
 
+* Copy the cluster host name into `dwh.cfg` at HOST
+* Copy the user role ARN into `dwh.cfg` at ARN
+
 ## Step 2: Create tables
 
 `$ python create_tables.py`

@@ -99,7 +99,7 @@ def open_tcp(vpc_id):
     try:
         vpc = ec2.Vpc(id=vpc_id)
         defaultSg = list(vpc.security_groups.all())[0]
-        print(defaultSg)
+        print('defaultSg: ', defaultSg)
         defaultSg.authorize_ingress(
             GroupName=defaultSg.group_name,
             CidrIp='0.0.0.0/0',
@@ -107,6 +107,7 @@ def open_tcp(vpc_id):
             FromPort=int(DWH_PORT),
             ToPort=int(DWH_PORT)
         )
+        print('TCP Opened')
     except Exception as e:
         print(e)
 
@@ -163,6 +164,7 @@ def main(args):
         # Open TCP connection upon successful cluster creation
         if cluster and cluster['ClusterStatus'] == 'available':
             print('Cluster created at {}'.format(cluster['Endpoint']))
+
             open_tcp(cluster['VpcId'])
 
         else:

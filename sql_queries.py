@@ -172,8 +172,9 @@ SELECT auth,
     ) AS time_key,
     TIMESTAMP 'epoch' + ts / 1000 * INTERVAL '1 second' AS ts
 FROM stg_song_events EVENTS
-    -- Join on songs to get song_id
-    JOIN stg_songs songs ON (
+    -- Join on songs to get song_id. Left join because many song titles don't appear in the songs collection
+    -- This is something as I DE I'd like to verify the cause of w/ the source data owners
+    LEFT JOIN stg_songs songs ON (
         EVENTS.artist = songs.artist_name
         AND EVENTS.song = songs.title
     )
